@@ -15,6 +15,38 @@ const CONFIG = {
   opayMerchantName: 'ENYOJO SHADES',
   opayAccountNo: '8186389898',
   paystackPublicKey: 'pk_test_d3a51f0c39f0417937397e5df0f02781b0a2dfd2',
+
+  // Curated Style Guides for Section 1 (Editorial Expand)
+  moodGuides: {
+    BOLD: {
+      badge: 'BOLD STYLING GUIDE',
+      title: 'The Statement Cat Eye Look',
+      tip: 'Pair with sharp monochrome blazers, structured outerwear, or clean streetwear for an unmissable, powerful impression.',
+      productId: 'cat-eye-white',
+      productName: 'Imperial White Cat Eye'
+    },
+    SOFT: {
+      badge: 'SOFT STYLING GUIDE',
+      title: 'The Rose Gold Grace',
+      tip: 'Complements soft pastel knits, silk fabrics, and warm rose gold jewelry for effortless, understated daily luxury.',
+      productId: 'cat-eye-rose-gold',
+      productName: 'Royal Rose Gold Wire'
+    },
+    CLASSIC: {
+      badge: 'CLASSIC STYLING GUIDE',
+      title: 'The Executive Wire Contours',
+      tip: 'Tailored for corporate suits, crisp white shirts, and traditional native attire. Timeless, refined confidence for any room.',
+      productId: 'wire-obsidian',
+      productName: 'Midnight Obsidian Classic'
+    },
+    PLAYFUL: {
+      badge: 'PLAYFUL STYLING GUIDE',
+      title: 'The Expressive Lavender Silhouette',
+      tip: 'Style with vibrant summer tones, denim jackets, and weekend brunch fits. For when you want your accessories to start the conversation.',
+      productId: 'cat-eye-lavender',
+      productName: 'Lavender Dusk Luxe'
+    }
+  },
   
   // Product Catalogue Architecture with Multi-Angle Gallery Support
   products: [

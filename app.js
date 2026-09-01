@@ -18,28 +18,28 @@ const MOOD_DATA = {
     id: 'cat-eye-white',
     badge: 'BOLD FRAME',
     name: 'The Statement White Cat Eye',
-    price: '₦18,500',
+    price: '₦16,500',
     image: 'assets/products/cat_eye_white_model.jpg'
   },
   SOFT: {
     id: 'cat-eye-rose-gold',
     badge: 'SOFT FRAME',
     name: 'Rose Gold Wireframe',
-    price: '₦16,500',
+    price: '₦15,000',
     image: 'assets/products/cat_eye_rose_gold_model.jpg'
   },
   CLASSIC: {
     id: 'wire-obsidian',
     badge: 'CLASSIC FRAME',
     name: 'The Obsidian Classic',
-    price: '₦17,500',
+    price: '₦14,500',
     image: 'assets/slides/slide2_hero.jpg'
   },
   PLAYFUL: {
     id: 'cat-eye-lavender',
     badge: 'PLAYFUL FRAME',
     name: 'Lavender Dusk Silhouette',
-    price: '₦19,000',
+    price: '₦17,000',
     image: 'assets/slides/slide3_hero.jpg'
   }
 };
@@ -143,7 +143,7 @@ function resetProgressBar() {
   progressBars.forEach(b => b.style.width = '0%');
 }
 
-// SECTION 1 INTERACTIVITY: THE ENYOJO MOOD (DESKTOP + MOBILE STAGE)
+// SECTION 1 INTERACTIVITY: THE ENYOJO MOOD (EDITORIAL STYLE CARD EXPAND - OPTION B)
 function initEnyojoMoodInteractivity() {
   const moodSection = document.getElementById('enyojo-mood');
   const moodSpread = document.getElementById('mood-spread');
@@ -175,14 +175,16 @@ function initEnyojoMoodInteractivity() {
 
   // Label click & hover events
   moodLabels.forEach(label => {
-    label.addEventListener('mouseenter', () => activateMood(label.dataset.mood));
     label.addEventListener('click', () => activateMood(label.dataset.mood));
   });
 
-  // Desktop Card Hover
+  // Desktop Card Click (EDITORIAL EXPAND OPTION B)
   moodCards.forEach(card => {
-    card.addEventListener('mouseenter', () => activateMood(card.dataset.mood));
-    card.addEventListener('mouseleave', () => deactivateMoods());
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+      activateMood(card.dataset.mood);
+      openEditorialStyleGuide(card.dataset.mood);
+    });
   });
 
   // Mobile Dot Click
@@ -211,13 +213,10 @@ function initEnyojoMoodInteractivity() {
         activateMood(prevKey);
       }
     }, { passive: true });
-  }
 
-  function deactivateMoods() {
-    if (window.innerWidth >= 993 && moodSpread) {
-      moodSpread.classList.remove('has-active');
-      moodCards.forEach(c => c.classList.remove('active'));
-    }
+    mobileCard.addEventListener('click', () => {
+      openEditorialStyleGuide(activeMoodKey);
+    });
   }
 }
 
@@ -256,7 +255,6 @@ function activateMood(moodName) {
       if (mobileBadge) mobileBadge.textContent = data.badge;
       if (mobileTitle) mobileTitle.textContent = data.name;
       if (mobilePrice) mobilePrice.textContent = data.price;
-      mobileCard.onclick = () => openQuickView(data.id);
       mobileImg.style.opacity = '1';
     }, 150);
 
@@ -266,7 +264,55 @@ function activateMood(moodName) {
   }
 }
 
-// SECTION 2 INTERACTIVITY: WEAR THE MOMENT
+// SECTION 1 OPTION B: OPEN EDITORIAL STYLE GUIDE DRAWER / POP-OVER
+function openEditorialStyleGuide(moodName) {
+  const guide = CONFIG.moodGuides[moodName];
+  if (!guide) return;
+
+  const modal = document.getElementById('quick-view-modal');
+  const content = document.getElementById('quick-view-content');
+  if (!modal || !content) return;
+
+  content.innerHTML = `
+    <div style="text-align: center; padding: 10px 0;">
+      <span style="color: var(--warm-gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 8px;">
+        ${guide.badge}
+      </span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.4rem); color: #FFF; margin-bottom: 14px;">
+        ${guide.title}
+      </h2>
+      
+      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border-purple); padding: 20px; border-radius: 18px; margin-bottom: 24px; text-align: left;">
+        <div style="font-size: 0.8rem; color: var(--soft-lavender); font-weight: 700; margin-bottom: 6px;">✨ FASHION STYLING TIP:</div>
+        <p style="color: var(--text-light-secondary); font-size: 0.9rem; line-height: 1.6;">${guide.tip}</p>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn-primary" onclick="closeQuickView(); filterAndScrollToMood('${moodName}')" style="width: 100%; max-width: 320px;">
+          EXPLORE ${moodName} FRAMES IN SHOP →
+        </button>
+      </div>
+    </div>
+  `;
+
+  modal.classList.add('active');
+}
+
+function filterAndScrollToMood(vibe) {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    if (btn.dataset.vibe === vibe || (vibe === 'SOFT' && btn.dataset.vibe === 'MINIMAL')) {
+      btn.click();
+    }
+  });
+
+  const shopSection = document.getElementById('collection');
+  if (shopSection) {
+    shopSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// SECTION 2 INTERACTIVITY: WEAR THE MOMENT (SHOP HIGHLIGHT OPTION A)
 function initWearMomentScroll() {
   const wrapper = document.querySelector('.wear-moment-sticky-wrapper');
   const track = document.getElementById('horizontal-track');
@@ -289,13 +335,34 @@ function initWearMomentScroll() {
   });
 }
 
-// RENDER FEATURED COLLECTION GRID
+// SECTION 2 OPTION A: DIRECT HIGHLIGHT IN SHOP
+function highlightProductFrame(productId) {
+  renderCatalog(CONFIG.products);
+  
+  const shopSection = document.getElementById('collection');
+  if (shopSection) {
+    shopSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  setTimeout(() => {
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+      if (card.getAttribute('data-product-id') === productId) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.classList.add('gold-highlight-pulse');
+        setTimeout(() => card.classList.remove('gold-highlight-pulse'), 3000);
+      }
+    });
+  }, 600);
+}
+
+// RENDER FEATURED COLLECTION GRID (SECTION 3 E-COMMERCE HUB)
 function renderCatalog(items) {
   const grid = document.getElementById('product-grid');
   if (!grid) return;
 
   grid.innerHTML = items.map(item => `
-    <div class="product-card" data-vibe="${item.vibe}">
+    <div class="product-card" data-vibe="${item.vibe}" data-product-id="${item.id}">
       <div class="product-image-stage" onclick="openQuickView('${item.id}')">
         <span class="product-tag-badge">${item.tag}</span>
         
@@ -366,7 +433,7 @@ function initModalListeners() {
   });
 }
 
-// RICH MULTI-ANGLE & COLOR PRODUCT DETAIL SHEET MODAL
+// RICH MULTI-ANGLE & COLOR PRODUCT DETAIL SHEET MODAL (FOR SECTION 3 SHOP ONLY)
 function openQuickView(productId) {
   const product = CONFIG.products.find(p => p.id === productId);
   if (!product) return;

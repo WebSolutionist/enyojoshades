@@ -13,7 +13,7 @@
   <!-- Paystack / OPay Payment Engine SDK -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
 
-  <link rel="stylesheet" href="index.css?v=28.0">
+  <link rel="stylesheet" href="index.css?v=29.0">
 </head>
 <body>
 
@@ -220,48 +220,48 @@
 
       <!-- DESKTOP ASYMMETRIC SPREAD (Visible >= 993px) -->
       <div class="mood-asymmetric-spread desktop-spread-only" id="mood-spread">
-        <div class="mood-portrait-card portrait-bold active" data-mood="BOLD" onclick="openQuickView('cat-eye-white')">
+        <div class="mood-portrait-card portrait-bold active" data-mood="BOLD" onclick="openEditorialStyleGuide('BOLD')">
           <img src="assets/products/cat_eye_white_model.jpg" alt="Bold Enyojo Frame Look" />
           <div class="view-frame-badge">
-            <span>BOLD FRAME</span> • <span>VIEW FRAME →</span>
+            <span>BOLD FRAME</span> • <span>STYLE GUIDE →</span>
           </div>
         </div>
 
-        <div class="mood-portrait-card portrait-soft" data-mood="SOFT" onclick="openQuickView('cat-eye-rose-gold')">
+        <div class="mood-portrait-card portrait-soft" data-mood="SOFT" onclick="openEditorialStyleGuide('SOFT')">
           <img src="assets/products/cat_eye_rose_gold_model.jpg" alt="Soft Enyojo Frame Look" />
           <div class="view-frame-badge">
-            <span>SOFT FRAME</span> • <span>VIEW FRAME →</span>
+            <span>SOFT FRAME</span> • <span>STYLE GUIDE →</span>
           </div>
         </div>
 
-        <div class="mood-portrait-card portrait-classic" data-mood="CLASSIC" onclick="openQuickView('wire-obsidian')">
+        <div class="mood-portrait-card portrait-classic" data-mood="CLASSIC" onclick="openEditorialStyleGuide('CLASSIC')">
           <img src="assets/slides/slide2_hero.jpg" alt="Classic Enyojo Frame Look" />
           <div class="view-frame-badge">
-            <span>CLASSIC FRAME</span> • <span>VIEW FRAME →</span>
+            <span>CLASSIC FRAME</span> • <span>STYLE GUIDE →</span>
           </div>
         </div>
 
-        <div class="mood-portrait-card portrait-playful" data-mood="PLAYFUL" onclick="openQuickView('cat-eye-lavender')">
+        <div class="mood-portrait-card portrait-playful" data-mood="PLAYFUL" onclick="openEditorialStyleGuide('PLAYFUL')">
           <img src="assets/slides/slide3_hero.jpg" alt="Playful Enyojo Frame Look" />
           <div class="view-frame-badge">
-            <span>PLAYFUL FRAME</span> • <span>VIEW FRAME →</span>
+            <span>PLAYFUL FRAME</span> • <span>STYLE GUIDE →</span>
           </div>
         </div>
       </div>
 
       <!-- MOBILE DYNAMIC INTERACTIVE MOOD STAGE (Visible < 993px) -->
       <div class="mobile-mood-stage-wrapper mobile-stage-only" id="mobile-mood-stage">
-        <div class="mobile-mood-card" id="mobile-mood-card" onclick="openQuickView('cat-eye-white')">
+        <div class="mobile-mood-card" id="mobile-mood-card" onclick="openEditorialStyleGuide(activeMoodKey)">
           <img src="assets/products/cat_eye_white_model.jpg" id="mobile-mood-img" alt="Active Enyojo Mood Frame" />
           <span class="mobile-mood-badge" id="mobile-mood-badge">BOLD FRAME</span>
           
           <div class="mobile-mood-info-panel">
             <div class="mobile-mood-meta-row">
               <h3 class="mobile-mood-title" id="mobile-mood-title">The Statement White Cat Eye</h3>
-              <span class="mobile-mood-price" id="mobile-mood-price">₦18,500</span>
+              <span class="mobile-mood-price" id="mobile-mood-price">₦16,500</span>
             </div>
             <div class="mobile-mood-cta-row">
-              <span class="btn-mobile-mood-view">VIEW FRAME DETAILS →</span>
+              <span class="btn-mobile-mood-view">VIEW STYLING GUIDE →</span>
             </div>
           </div>
         </div>
@@ -292,43 +292,43 @@
       </div>
 
       <div class="horizontal-track-container" id="horizontal-track">
-        <div class="lifestyle-scene-item scene-everyday" onclick="openQuickView('cat-eye-rose-gold')">
+        <div class="lifestyle-scene-item scene-everyday" onclick="highlightProductFrame('cat-eye-rose-gold')">
           <img src="assets/products/everyday_lifestyle.jpg" alt="Everyday Enyojo Frame Moment" />
           <div class="scene-overlay-label">
             <span class="scene-category-tag">EVERYDAY</span>
             <h3 class="scene-title">THE EVERYDAY FRAME</h3>
             <p class="scene-desc">For days that don't need a reason.</p>
-            <span class="btn-scene-view">VIEW FRAME →</span>
+            <span class="btn-scene-view">VIEW IN SHOP GRID ↓</span>
           </div>
         </div>
 
-        <div class="lifestyle-scene-item scene-campus" onclick="openQuickView('cat-eye-white')">
+        <div class="lifestyle-scene-item scene-campus" onclick="highlightProductFrame('cat-eye-white')">
           <img src="assets/slides/slide1_hero.jpg" alt="Campus Enyojo Frame Moment" />
           <div class="scene-overlay-label">
             <span class="scene-category-tag">CAMPUS</span>
             <h3 class="scene-title">THE STATEMENT FRAME</h3>
             <p class="scene-desc">For when subtle isn't the assignment.</p>
-            <span class="btn-scene-view">VIEW FRAME →</span>
+            <span class="btn-scene-view">VIEW IN SHOP GRID ↓</span>
           </div>
         </div>
 
-        <div class="lifestyle-scene-item scene-weekend" onclick="openQuickView('cat-eye-lavender')">
+        <div class="lifestyle-scene-item scene-weekend" onclick="highlightProductFrame('cat-eye-lavender')">
           <img src="assets/slides/slide3_hero.jpg" alt="Weekend Enyojo Frame Moment" />
           <div class="scene-overlay-label">
             <span class="scene-category-tag">WEEKEND</span>
             <h3 class="scene-title">THE PLAYFUL SILHOUETTE</h3>
             <p class="scene-desc">Express your fun, unapologetic side.</p>
-            <span class="btn-scene-view">VIEW FRAME →</span>
+            <span class="btn-scene-view">VIEW IN SHOP GRID ↓</span>
           </div>
         </div>
 
-        <div class="lifestyle-scene-item scene-nightout" onclick="openQuickView('wire-obsidian')">
+        <div class="lifestyle-scene-item scene-nightout" onclick="highlightProductFrame('wire-obsidian')">
           <img src="assets/products/night_out_lifestyle.jpg" alt="Night Out Enyojo Frame Moment" />
           <div class="scene-overlay-label">
             <span class="scene-category-tag">NIGHT OUT</span>
             <h3 class="scene-title">THE OBSIDIAN CLASSIC</h3>
             <p class="scene-desc">Elevated confidence for after dark.</p>
-            <span class="btn-scene-view">VIEW FRAME →</span>
+            <span class="btn-scene-view">VIEW IN SHOP GRID ↓</span>
           </div>
         </div>
       </div>
@@ -477,7 +477,7 @@
     .modal.active { display: flex !important; }
   </style>
 
-  <script src="config.js?v=28.0"></script>
-  <script src="app.js?v=28.0"></script>
+  <script src="config.js?v=29.0"></script>
+  <script src="app.js?v=29.0"></script>
 </body>
 </html>
