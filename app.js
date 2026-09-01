@@ -274,21 +274,26 @@ function openEditorialStyleGuide(moodName) {
   if (!modal || !content) return;
 
   content.innerHTML = `
-    <div style="text-align: center; padding: 10px 0;">
-      <span style="color: var(--warm-gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 8px;">
+    <div style="text-align: center; padding: 6px 0;">
+      <span style="color: var(--warm-gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 6px;">
         ${guide.badge}
       </span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.4rem); color: #FFF; margin-bottom: 14px;">
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.3rem, 4vw, 2.2rem); color: #FFF; margin-bottom: 12px; line-height: 1.25; word-break: break-word;">
         ${guide.title}
       </h2>
       
-      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border-purple); padding: 20px; border-radius: 18px; margin-bottom: 24px; text-align: left;">
-        <div style="font-size: 0.8rem; color: var(--soft-lavender); font-weight: 700; margin-bottom: 6px;">✨ FASHION STYLING TIP:</div>
-        <p style="color: var(--text-light-secondary); font-size: 0.9rem; line-height: 1.6;">${guide.tip}</p>
+      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border-purple); padding: 16px; border-radius: 16px; margin-bottom: 20px; text-align: left;">
+        <div style="font-size: 0.78rem; color: var(--soft-lavender); font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+          FASHION STYLING TIP:
+        </div>
+        <p style="color: var(--text-light-secondary); font-size: 0.85rem; line-height: 1.5; word-break: break-word;">${guide.tip}</p>
       </div>
 
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <button class="btn-primary" onclick="closeQuickView(); filterAndScrollToMood('${moodName}')" style="width: 100%; max-width: 320px;">
+        <button class="btn-primary" onclick="closeQuickView(); filterAndScrollToMood('${moodName}')" style="width: 100%; max-width: 320px; font-size: 0.82rem; padding: 12px 20px;">
           EXPLORE ${moodName} FRAMES IN SHOP →
         </button>
       </div>
@@ -371,14 +376,14 @@ function renderCatalog(items) {
         
         <div class="product-quick-cta">
           <button class="btn-card-order" onclick="event.stopPropagation(); openQuickView('${item.id}')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="6" cy="12" r="4.5" />
               <circle cx="18" cy="12" r="4.5" />
               <path d="M10.5 11.5c.8-.7 2.2-.7 3 0" />
               <path d="M1.5 12l2.5-3" />
               <path d="M22.5 12l-2.5-3" />
             </svg>
-            View Angles & Order Frame
+            View Details & Order
           </button>
         </div>
       </div>
@@ -487,23 +492,26 @@ function openQuickView(productId) {
 
       <!-- RIGHT COLUMN: DETAILS, COLORS, QUANTITY & OPAY PAYMENTS -->
       <div>
-        <span style="color: var(--warm-gold); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">${product.tag}</span>
-        <h2 style="font-size: clamp(1.4rem, 4vw, 1.8rem); color: #FFF; margin: 4px 0 8px 0; font-family: var(--font-serif);">${product.name}</h2>
+        <span style="color: var(--warm-gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">${product.tag}</span>
+        <h2 style="font-size: clamp(1.15rem, 3.8vw, 1.8rem); color: #FFF; margin: 4px 0 8px 0; font-family: var(--font-serif); word-break: break-word; overflow-wrap: break-word; line-height: 1.25;">${product.name}</h2>
         
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-          <span style="font-size: 1.35rem; color: var(--warm-gold); font-weight: 700;" id="sheet-unit-price">${product.price}</span>
-          <span style="font-size: 0.78rem; color: var(--soft-lavender); background: rgba(118, 91, 167, 0.25); padding: 4px 10px; border-radius: 12px; border: 1px solid var(--glass-border-purple);">In Stock</span>
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+          <span style="font-size: 1.25rem; color: var(--warm-gold); font-weight: 700;" id="sheet-unit-price">${product.price}</span>
+          <span style="font-size: 0.72rem; color: var(--soft-lavender); background: rgba(118, 91, 167, 0.25); padding: 4px 10px; border-radius: 12px; border: 1px solid var(--glass-border-purple);">In Stock</span>
         </div>
 
         <div class="prescription-badge">
-          <span>🔍</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
           <span>Prescription & Fashion Lens Compatible</span>
         </div>
 
-        <p style="color: var(--text-light-secondary); font-size: 0.82rem; line-height: 1.5; margin-bottom: 14px;">${product.description}</p>
+        <p style="color: var(--text-light-secondary); font-size: 0.78rem; line-height: 1.45; margin-bottom: 12px; word-break: break-word;">${product.description}</p>
 
         <!-- COLOR SWATCH SELECTOR -->
-        <div style="font-size: 0.78rem; color: #FFF; font-weight: 600; margin-bottom: 6px;">Select Color Variant:</div>
+        <div style="font-size: 0.75rem; color: #FFF; font-weight: 600; margin-bottom: 6px;">Select Color Variant:</div>
         <div class="color-swatch-group">
           ${product.colors.map((c, i) => `
             <button class="color-swatch-btn ${i === 0 ? 'active' : ''}" onclick="selectSheetColor('${c}', this)">
@@ -514,13 +522,13 @@ function openQuickView(productId) {
 
         <!-- QUANTITY STEPPER -->
         <div class="quantity-row">
-          <span style="font-size: 0.82rem; color: #FFF; font-weight: 600;">Quantity:</span>
+          <span style="font-size: 0.8rem; color: #FFF; font-weight: 600;">Quantity:</span>
           <div class="quantity-stepper">
             <button class="step-btn" onclick="changeSheetQuantity(-1)">-</button>
             <span class="quantity-val" id="sheet-quantity-val">1</span>
             <button class="step-btn" onclick="changeSheetQuantity(1)">+</button>
           </div>
-          <span style="font-size: 1.1rem; color: var(--warm-gold); font-weight: 700;" id="sheet-total-price">${product.price}</span>
+          <span style="font-size: 1.05rem; color: var(--warm-gold); font-weight: 700;" id="sheet-total-price">${product.price}</span>
         </div>
 
         <!-- CUSTOMER CHECKOUT FORM FOR OPAY DIRECT PAYMENT -->
@@ -531,16 +539,16 @@ function openQuickView(productId) {
         </div>
 
         <!-- DUAL ACTION BUTTONS (OPAY PAY ONLINE + WHATSAPP DIRECT ORDER) -->
-        <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
           <button class="opay-pay-btn" onclick="processPaystackOpayPayment()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="5" width="20" height="14" rx="2" />
               <line x1="2" y1="10" x2="22" y2="10" />
             </svg>
             <span>PAY ONLINE NOW (OPay / Card / Transfer)</span>
           </button>
 
-          <button class="btn-whatsapp-hero" style="width: 100%; justify-content: center; padding: 12px;" onclick="triggerWhatsAppOrder('${product.name}')">
+          <button class="btn-whatsapp-hero" style="width: 100%; justify-content: center; padding: 10px; font-size: 0.78rem;" onclick="triggerWhatsAppOrder('${product.name}')">
             ORDER VIA WHATSAPP INSTEAD
           </button>
         </div>

@@ -1,4 +1,4 @@
-/* ENYOJO SHADES — SENIOR FRONTEND DESIGN SYSTEM */
+/* ENYOJO SHADES — SENIOR FRONTEND DESIGN SYSTEM & UI/UX PRO MAX ARCHITECTURE */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -39,25 +39,27 @@ html {
   color: var(--text-light-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden !important;
+  width: 100% !important;
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   line-height: 1.6;
-  width: 100%;
+  width: 100% !important;
 }
 
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 img, video { max-width: 100%; height: auto; display: block; }
 
-/* CONTAINER WITH GUARANTEED SIDE MARGINS */
+/* CONTAINER WITH GUARANTEED SIDE MARGINS (NO TEXT TOUCHING EDGES) */
 .container {
   width: 90%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
-  box-sizing: border-box;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
 }
 
 .heading-serif {
@@ -617,7 +619,7 @@ img, video { max-width: 100%; height: auto; display: block; }
 .floating-whatsapp-btn:hover { transform: scale(1.1); }
 
 /* =========================================================
-   RICH MULTI-ANGLE & COLOR PRODUCT DETAIL SHEET MODAL STYLES (GENEROUS SPACING)
+   RICH MULTI-ANGLE & COLOR PRODUCT DETAIL SHEET MODAL STYLES
    ========================================================= */
 
 .modal-sheet-panel {
@@ -629,7 +631,7 @@ img, video { max-width: 100%; height: auto; display: block; }
   position: relative !important;
   box-sizing: border-box !important;
   border-radius: 28px !important;
-  background: rgba(20, 14, 36, 0.95) !important;
+  background: rgba(20, 14, 36, 0.96) !important;
   backdrop-filter: blur(28px) !important;
   border: 1px solid var(--glass-border-purple) !important;
   box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8) !important;
@@ -674,6 +676,7 @@ img, video { max-width: 100%; height: auto; display: block; }
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .angle-thumb-btn {
@@ -686,6 +689,8 @@ img, video { max-width: 100%; height: auto; display: block; }
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .angle-thumb-btn img {
@@ -725,6 +730,8 @@ img, video { max-width: 100%; height: auto; display: block; }
   font-size: 0.75rem;
   font-weight: 600;
   margin: 12px 0 16px 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .color-swatch-group {
@@ -847,7 +854,7 @@ img, video { max-width: 100%; height: auto; display: block; }
 .opay-pay-btn:hover { transform: translateY(-2px); }
 
 /* =========================================================
-   FULLSTACK RESPONSIVE MOBILE BREAKPOINTS (< 992px & < 768px & < 576px)
+   STRICT SENIOR FULLSTACK RESPONSIVE MOBILE BREAKPOINTS (< 992px & < 768px & < 576px)
    ========================================================= */
 
 @media (max-width: 992px) {
@@ -953,10 +960,7 @@ img, video { max-width: 100%; height: auto; display: block; }
 
   .sheet-grid-container {
     grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .sheet-main-img-box {
-    height: 260px;
+    gap: 18px;
   }
 
   .wear-moment-sticky-wrapper { height: auto; }
@@ -970,23 +974,16 @@ img, video { max-width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: 768px) {
-  /* SLEEK COMPACT NAVBAR BUTTON ON MOBILE (1-LINE TEXT, NO TALL OVERLAP) */
+  /* BRAND LOGO & NAVBAR ON MOBILE */
+  .brand-title {
+    font-size: 1.15rem !important;
+  }
   .btn-nav-whatsapp {
-    padding: 6px 12px;
-    font-size: 0.72rem;
-    min-height: 32px;
-    height: 32px;
-    white-space: nowrap;
-    border-radius: 16px;
-    gap: 4px;
-  }
-  .btn-nav-whatsapp svg {
-    width: 14px;
-    height: 14px;
-  }
-  .btn-nav-whatsapp span {
-    display: inline-block;
-    white-space: nowrap;
+    padding: 5px 10px !important;
+    font-size: 0.7rem !important;
+    min-height: 30px !important;
+    height: 30px !important;
+    border-radius: 15px !important;
   }
 
   /* FULL-HEIGHT OVERLAID HERO BANNER ON MOBILE */
@@ -1068,50 +1065,139 @@ img, video { max-width: 100%; height: auto; display: block; }
   .mood-header { text-align: center; }
   .mood-header .section-title, .mood-header .section-subtitle { text-align: center !important; margin: 0 auto !important; }
   .mood-labels-editorial { justify-content: center; gap: 16px; }
+
+  /* PRODUCT CARD ON MOBILE PHONE SCREENS */
+  .product-image-stage {
+    height: 250px !important;
+  }
+  .product-quick-cta {
+    padding: 8px 10px !important;
+  }
+  .btn-card-order {
+    padding: 8px 12px !important;
+    font-size: 0.75rem !important;
+    min-height: 32px !important;
+    height: 32px !important;
+    font-weight: 600 !important;
+    border-radius: 16px !important;
+  }
+
+  /* SLEEK NON-OVERLAPPING FLOATING ACTION DOCK ON MOBILE */
+  .floating-dock {
+    bottom: 14px !important;
+    right: 14px !important;
+    z-index: 990 !important;
+  }
+  .floating-whatsapp-btn {
+    width: 44px !important;
+    height: 44px !important;
+    box-shadow: 0 4px 16px rgba(118, 91, 167, 0.4) !important;
+  }
+  .floating-whatsapp-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
 }
 
-/* PHONE SCREENS (< 576px) — GUARANTEED 20PX MARGINS & SPACIOUS MODAL CARD */
+/* PHONE SCREENS (< 576px) — FLAWLESS CONTAINED MODAL & ZERO OVERFLOW */
 @media (max-width: 576px) {
-  .container { padding-left: 20px; padding-right: 20px; box-sizing: border-box; }
-  .section-padding { padding: 50px 0; }
+  .container { padding-left: 16px; padding-right: 16px; box-sizing: border-box; }
+  .section-padding { padding: 45px 0; }
 
-  /* GUARANTEED INNER SPACING FOR MODAL & BUTTONS ON PHONES */
+  /* FLAWLESS CONTAINED MODAL SHEET ON SMALL MOBILE PHONES */
   .modal-sheet-panel {
-    width: 92% !important;
-    padding: 22px 18px !important;
-    border-radius: 24px !important;
+    width: 92vw !important;
+    max-width: 92vw !important;
+    max-height: 85vh !important;
+    padding: 16px 14px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .sheet-grid-container {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .sheet-main-img-box {
+    height: 220px !important;
+  }
+
+  .sheet-grid-container h2 {
+    font-size: 1.15rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+  }
+
+  .angle-thumbnail-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+    width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  .opay-pay-btn {
-    padding: 12px 16px !important;
+  .angle-thumb-btn {
+    height: 52px !important;
+    border-radius: 8px !important;
+  }
+
+  .angle-thumb-label {
+    font-size: 0.5rem !important;
+    padding: 1px 0 !important;
+    letter-spacing: 0px !important;
+  }
+
+  .prescription-badge {
+    font-size: 0.72rem !important;
+    padding: 6px 10px !important;
+    margin: 8px 0 12px 0 !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    flex-wrap: wrap !important;
+  }
+
+  .sheet-grid-container p {
     font-size: 0.78rem !important;
-    border-radius: 24px !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .opay-pay-btn {
+    padding: 12px 14px !important;
+    font-size: 0.78rem !important;
+    border-radius: 22px !important;
+    line-height: 1.3 !important;
   }
 
   .btn-whatsapp-hero {
-    padding: 12px 16px !important;
+    padding: 12px 14px !important;
     font-size: 0.78rem !important;
-    border-radius: 24px !important;
+    border-radius: 22px !important;
   }
 
-  .wear-moment-header { padding: 0 20px; box-sizing: border-box; }
-  .horizontal-track-container { padding: 0 20px; box-sizing: border-box; }
+  .wear-moment-header { padding: 0 16px; box-sizing: border-box; }
+  .horizontal-track-container { padding: 0 16px; box-sizing: border-box; }
 
   /* Section 2 Mobile Cards */
-  .lifestyle-scene-item { height: 320px !important; }
-  .scene-title { font-size: 1.35rem; }
-  .scene-desc { font-size: 0.78rem; }
+  .lifestyle-scene-item { height: 300px !important; }
+  .scene-title { font-size: 1.25rem; }
+  .scene-desc { font-size: 0.75rem; }
 
   /* 1-CARD PER ROW FOR "FIND YOUR FRAME" ON PHONES */
-  .product-grid { grid-template-columns: 1fr !important; gap: 24px; padding: 0 20px; box-sizing: border-box; }
-  .product-image-stage { height: 280px; }
-  .product-info { padding: 16px; }
-  .product-title { font-size: 1.1rem; }
-  .product-price { font-size: 1.05rem; }
+  .product-grid { grid-template-columns: 1fr !important; gap: 20px; padding: 0 16px; box-sizing: border-box; }
+  .product-info { padding: 14px; }
+  .product-title { font-size: 1.05rem; }
+  .product-price { font-size: 1.02rem; }
 
   /* Footers & Cards */
-  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-  .story-image-frame { height: 280px; }
-  .gallery-card { height: 260px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+  .story-image-frame { height: 260px; }
+  .gallery-card { height: 240px; }
 }
