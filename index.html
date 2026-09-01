@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enyojo Shades | Premium Fashion Eyewear</title>
+  <meta name="description" content="Discover stylish fashion eyewear from Enyojo Shades. Explore frames designed to complement your unique style and order directly through WhatsApp or Instagram.">
+  
+  <meta property="og:title" content="Enyojo Shades | Premium Fashion Eyewear">
+  <meta property="og:description" content="Eyewear made to complete the way you show up. Order directly via WhatsApp or Instagram.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="index.css?v=26.0">
+</head>
+<body>
+
+  <!-- ELEGANT MINIMALIST FIXED NAVIGATION -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" stroke="#765BA7" stroke-width="4" />
+          <path d="M25 50 C 35 30, 65 30, 75 50 C 65 70, 35 70, 25 50 Z" stroke="#E5C158" stroke-width="4" fill="none" />
+          <circle cx="50" cy="50" r="12" fill="#765BA7" />
+        </svg>
+        <div>
+          <div class="brand-title">ENYOJO</div>
+          <div class="brand-subtitle">S H A D E S</div>
+        </div>
+      </a>
+
+      <!-- Clear & Intuitive Desktop Links -->
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active">Home</a></li>
+        <li><a href="#collection" class="nav-link">Shop Frames</a></li>
+        <li><a href="#enyojo-mood" class="nav-link">Frame Styles</a></li>
+        <li><a href="#wear-the-moment" class="nav-link">Campaign Stories</a></li>
+        <li><a href="#contact" class="nav-link">Order Direct</a></li>
+      </ul>
+
+      <!-- Right Group: Compact Glasses Order Button + Hamburger Toggle -->
+      <div class="nav-right-group">
+        <button class="btn-nav-whatsapp" onclick="triggerGeneralWhatsApp()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="12" r="4.5" />
+            <circle cx="18" cy="12" r="4.5" />
+            <path d="M10.5 11.5c.8-.7 2.2-.7 3 0" />
+            <path d="M1.5 12l2.5-3" />
+            <path d="M22.5 12l-2.5-3" />
+          </svg>
+          <span>Order Direct</span>
+        </button>
+
+        <button class="mobile-hamburger-btn" onclick="toggleMobileDrawer()" title="Open Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE SLIDE-OUT NAVIGATION DRAWER -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <button class="mobile-drawer-close" onclick="toggleMobileDrawer()">&times;</button>
+    <a href="#" class="mobile-drawer-link" onclick="toggleMobileDrawer()">Home</a>
+    <a href="#collection" class="mobile-drawer-link" onclick="toggleMobileDrawer()">Shop Frames</a>
+    <a href="#enyojo-mood" class="mobile-drawer-link" onclick="toggleMobileDrawer()">Frame Styles</a>
+    <a href="#wear-the-moment" class="mobile-drawer-link" onclick="toggleMobileDrawer()">Campaign Stories</a>
+    <a href="#contact" class="mobile-drawer-link" onclick="toggleMobileDrawer()">Order Direct</a>
+  </div>
+
+  <!-- SECTION 1 — HIGH-FASHION INTERACTIVE HERO SLIDER CAROUSEL -->
+  <section class="hero-slider-stage" id="hero-slider">
+    <div class="hero-slides-wrapper">
+      
+      <!-- SLIDE 1 -->
+      <div class="hero-slide-item active" data-slide="0">
+        <img src="assets/slides/slide1_hero.jpg" alt="Enyojo Shades Campaign Slide 1" class="hero-slide-bg-img" />
+        <div class="hero-slide-gradient-overlay"></div>
+        <div class="container">
+          <div class="hero-slide-content">
+            <span class="eyebrow-tag">ONE YOU. MANY SIDES.</span>
+            <h1 class="heading-serif hero-title text-gradient">EVERY DAY HAS A LOOK.</h1>
+            <p class="hero-subhead">Eyewear made to complete the way you show up.</p>
+            <div class="hero-ctas">
+              <a href="#collection" class="btn-primary">EXPLORE COLLECTION →</a>
+              <button class="btn-whatsapp-hero" onclick="triggerGeneralWhatsApp()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="12" r="4.5" />
+                  <circle cx="18" cy="12" r="4.5" />
+                  <path d="M10.5 11.5c.8-.7 2.2-.7 3 0" />
+                  <path d="M1.5 12l2.5-3" />
+                  <path d="M22.5 12l-2.5-3" />
+                </svg>
+                SHOP VIA WHATSAPP
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="hero-slide-item" data-slide="1">
+        <img src="assets/slides/slide2_hero.jpg" alt="Enyojo Shades Campaign Slide 2" class="hero-slide-bg-img" />
+        <div class="hero-slide-gradient-overlay"></div>
+        <div class="container">
+          <div class="hero-slide-content">
+            <span class="eyebrow-tag">THE EMOTIONAL TURNING POINT</span>
+            <h1 class="heading-serif hero-title text-gradient">ONE FRAME.<br>TOTAL TRANSFORM.</h1>
+            <p class="hero-subhead">Sometimes the smallest change transforms your entire style.</p>
+            <div class="hero-ctas">
+              <a href="#collection" class="btn-primary">DISCOVER STYLES →</a>
+              <button class="btn-whatsapp-hero" onclick="triggerGeneralWhatsApp()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="12" r="4.5" />
+                  <circle cx="18" cy="12" r="4.5" />
+                  <path d="M10.5 11.5c.8-.7 2.2-.7 3 0" />
+                  <path d="M1.5 12l2.5-3" />
+                  <path d="M22.5 12l-2.5-3" />
+                </svg>
+                ORDER VIA WHATSAPP
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="hero-slide-item" data-slide="2">
+        <img src="assets/slides/slide3_hero.jpg" alt="Enyojo Shades Campaign Slide 3" class="hero-slide-bg-img" />
+        <div class="hero-slide-gradient-overlay"></div>
+        <div class="container">
+          <div class="hero-slide-content">
+            <span class="eyebrow-tag">CONFIDENCE IN FOCUS</span>
+            <h1 class="heading-serif hero-title text-gradient">YOUR FRAME.<br>YOUR STATEMENT.</h1>
+            <p class="hero-subhead">Find the one that feels like you.</p>
+            <div class="hero-ctas">
+              <a href="#collection" class="btn-primary">FIND YOUR FRAME →</a>
+              <a href="https://www.instagram.com/enyojoshades_nigeria" target="_blank" class="btn-whatsapp-hero" style="background: linear-gradient(135deg, #833AB4, #FD1D1D, #F56040);">
+                MESSAGE ON INSTAGRAM
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Control Buttons -->
+    <button class="slider-arrow-btn slider-arrow-prev" onclick="prevSlide()" title="Previous Slide">‹</button>
+    <button class="slider-arrow-btn slider-arrow-next" onclick="nextSlide()" title="Next Slide">›</button>
+
+    <!-- Bottom Timeline Tabs -->
+    <div class="slider-timeline-tabs">
+      <div class="slider-tab-item active" onclick="goToSlide(0)">
+        <span class="slider-tab-num">01</span>
+        <span class="slider-tab-label">EVERY DAY</span>
+        <div class="slider-tab-bar"><div class="slider-tab-progress" id="progress-0"></div></div>
+      </div>
+      <div class="slider-tab-item" onclick="goToSlide(1)">
+        <span class="slider-tab-num">02</span>
+        <span class="slider-tab-label">TRANSFORM</span>
+        <div class="slider-tab-bar"><div class="slider-tab-progress" id="progress-1"></div></div>
+      </div>
+      <div class="slider-tab-item" onclick="goToSlide(2)">
+        <span class="slider-tab-num">03</span>
+        <span class="slider-tab-label">YOUR STATEMENT</span>
+        <div class="slider-tab-bar"><div class="slider-tab-progress" id="progress-2"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — MERGED FEATURED COLLECTION & VIBE DISCOVERY -->
+  <section id="collection" class="section-padding" style="background: #0A0612;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="heading-serif section-title text-gradient">FIND YOUR FRAME.</h2>
+        <p class="section-subtitle">A frame for every mood, moment and version of you.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-vibe="ALL">ALL STYLES</button>
+        <button class="filter-btn" data-vibe="CLASSIC">CLASSIC</button>
+        <button class="filter-btn" data-vibe="BOLD">BOLD</button>
+        <button class="filter-btn" data-vibe="MINIMAL">MINIMAL</button>
+        <button class="filter-btn" data-vibe="COLOURFUL">COLOURFUL</button>
+      </div>
+
+      <div id="product-grid" class="product-grid"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: THE ENYOJO MOOD -->
+  <section id="enyojo-mood" class="enyojo-mood-section">
+    <svg class="bg-frame-motif" id="bg-frame-motif" viewBox="0 0 300 120" fill="none" stroke="#E5C158" stroke-width="1">
+      <path d="M20 50 C 20 20, 120 20, 120 50 C 120 80, 20 80, 20 50 Z" />
+      <path d="M180 50 C 180 20, 280 20, 280 50 C 280 80, 180 80, 180 50 Z" />
+      <path d="M120 45 Q 150 35, 180 45" />
+    </svg>
+
+    <div class="container">
+      <div class="mood-header">
+        <span class="eyebrow-tag">THE ENYOJO MOOD</span>
+        <h2 class="heading-serif section-title text-gradient" style="text-align: left; margin: 0;">
+          ONE BRAND.<br>MANY MOODS.
+        </h2>
+        <p class="section-subtitle" style="text-align: left; margin-top: 10px; max-width: 500px;">
+          Whatever version of you is showing up today, there's a frame for it.
+        </p>
+
+        <div class="mood-labels-editorial">
+          <span class="mood-label-item active" data-mood="BOLD">BOLD</span>
+          <span class="mood-label-item" data-mood="SOFT">SOFT</span>
+          <span class="mood-label-item" data-mood="CLASSIC">CLASSIC</span>
+          <span class="mood-label-item" data-mood="PLAYFUL">PLAYFUL</span>
+        </div>
+      </div>
+
+      <!-- DESKTOP ASYMMETRIC SPREAD (Visible >= 993px) -->
+      <div class="mood-asymmetric-spread desktop-spread-only" id="mood-spread">
+        <div class="mood-portrait-card portrait-bold active" data-mood="BOLD" onclick="openQuickView('cat-eye-white')">
+          <img src="assets/products/cat_eye_white_model.jpg" alt="Bold Enyojo Frame Look" />
+          <div class="view-frame-badge">
+            <span>BOLD FRAME</span> • <span>VIEW FRAME →</span>
+          </div>
+        </div>
+
+        <div class="mood-portrait-card portrait-soft" data-mood="SOFT" onclick="openQuickView('cat-eye-rose-gold')">
+          <img src="assets/products/cat_eye_rose_gold_model.jpg" alt="Soft Enyojo Frame Look" />
+          <div class="view-frame-badge">
+            <span>SOFT FRAME</span> • <span>VIEW FRAME →</span>
+          </div>
+        </div>
+
+        <div class="mood-portrait-card portrait-classic" data-mood="CLASSIC" onclick="openQuickView('wire-obsidian')">
+          <img src="assets/slides/slide2_hero.jpg" alt="Classic Enyojo Frame Look" />
+          <div class="view-frame-badge">
+            <span>CLASSIC FRAME</span> • <span>VIEW FRAME →</span>
+          </div>
+        </div>
+
+        <div class="mood-portrait-card portrait-playful" data-mood="PLAYFUL" onclick="openQuickView('cat-eye-lavender')">
+          <img src="assets/slides/slide3_hero.jpg" alt="Playful Enyojo Frame Look" />
+          <div class="view-frame-badge">
+            <span>PLAYFUL FRAME</span> • <span>VIEW FRAME →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE DYNAMIC INTERACTIVE MOOD STAGE (Visible < 993px) -->
+      <div class="mobile-mood-stage-wrapper mobile-stage-only" id="mobile-mood-stage">
+        <div class="mobile-mood-card" id="mobile-mood-card" onclick="openQuickView('cat-eye-white')">
+          <img src="assets/products/cat_eye_white_model.jpg" id="mobile-mood-img" alt="Active Enyojo Mood Frame" />
+          <span class="mobile-mood-badge" id="mobile-mood-badge">BOLD FRAME</span>
+          
+          <div class="mobile-mood-info-panel">
+            <div class="mobile-mood-meta-row">
+              <h3 class="mobile-mood-title" id="mobile-mood-title">The Statement White Cat Eye</h3>
+              <span class="mobile-mood-price" id="mobile-mood-price">₦18,500</span>
+            </div>
+            <div class="mobile-mood-cta-row">
+              <span class="btn-mobile-mood-view">VIEW FRAME DETAILS →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-mood-dots" id="mobile-mood-dots">
+          <button class="mood-dot active" data-mood="BOLD" title="Bold Mood"></button>
+          <button class="mood-dot" data-mood="SOFT" title="Soft Mood"></button>
+          <button class="mood-dot" data-mood="CLASSIC" title="Classic Mood"></button>
+          <button class="mood-dot" data-mood="PLAYFUL" title="Playful Mood"></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 2: WEAR THE MOMENT -->
+  <section id="wear-the-moment" class="wear-moment-sticky-wrapper">
+    <div class="wear-moment-viewport">
+      
+      <div class="wear-moment-header">
+        <span class="eyebrow-tag">WEAR THE MOMENT</span>
+        <h2 class="heading-serif section-title text-gradient" style="text-align: left; margin: 0; font-size: clamp(2rem, 4vw, 3rem);">
+          MADE FOR YOUR MOMENTS.
+        </h2>
+        <p class="section-subtitle" style="text-align: left; margin-top: 6px; font-size: 0.95rem;">
+          From everyday plans to the moments worth remembering, find a frame that goes with you.
+        </p>
+      </div>
+
+      <div class="horizontal-track-container" id="horizontal-track">
+        <div class="lifestyle-scene-item scene-everyday" onclick="openQuickView('cat-eye-rose-gold')">
+          <img src="assets/products/everyday_lifestyle.jpg" alt="Everyday Enyojo Frame Moment" />
+          <div class="scene-overlay-label">
+            <span class="scene-category-tag">EVERYDAY</span>
+            <h3 class="scene-title">THE EVERYDAY FRAME</h3>
+            <p class="scene-desc">For days that don't need a reason.</p>
+            <span class="btn-scene-view">VIEW FRAME →</span>
+          </div>
+        </div>
+
+        <div class="lifestyle-scene-item scene-campus" onclick="openQuickView('cat-eye-white')">
+          <img src="assets/slides/slide1_hero.jpg" alt="Campus Enyojo Frame Moment" />
+          <div class="scene-overlay-label">
+            <span class="scene-category-tag">CAMPUS</span>
+            <h3 class="scene-title">THE STATEMENT FRAME</h3>
+            <p class="scene-desc">For when subtle isn't the assignment.</p>
+            <span class="btn-scene-view">VIEW FRAME →</span>
+          </div>
+        </div>
+
+        <div class="lifestyle-scene-item scene-weekend" onclick="openQuickView('cat-eye-lavender')">
+          <img src="assets/slides/slide3_hero.jpg" alt="Weekend Enyojo Frame Moment" />
+          <div class="scene-overlay-label">
+            <span class="scene-category-tag">WEEKEND</span>
+            <h3 class="scene-title">THE PLAYFUL SILHOUETTE</h3>
+            <p class="scene-desc">Express your fun, unapologetic side.</p>
+            <span class="btn-scene-view">VIEW FRAME →</span>
+          </div>
+        </div>
+
+        <div class="lifestyle-scene-item scene-nightout" onclick="openQuickView('wire-obsidian')">
+          <img src="assets/products/night_out_lifestyle.jpg" alt="Night Out Enyojo Frame Moment" />
+          <div class="scene-overlay-label">
+            <span class="scene-category-tag">NIGHT OUT</span>
+            <h3 class="scene-title">THE OBSIDIAN CLASSIC</h3>
+            <p class="scene-desc">Elevated confidence for after dark.</p>
+            <span class="btn-scene-view">VIEW FRAME →</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5 — SOCIAL PROOF -->
+  <section id="social" class="section-padding" style="background: linear-gradient(180deg, #0A0612 0%, #150D28 100%);">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="heading-serif section-title text-gradient">SEEN ON ENYOJO.</h2>
+        <p class="section-subtitle">Real style moments from our fashion community</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="assets/products/cat_eye_rose_gold_model.jpg" alt="Seen on Enyojo" />
+          <div class="gallery-overlay">
+            <div class="gallery-user">@enyojoshades_nigeria</div>
+            <div class="gallery-quote">"This frame completes every outfit I put together."</div>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="assets/products/cat_eye_white_model.jpg" alt="Seen on Enyojo" />
+          <div class="gallery-overlay">
+            <div class="gallery-user">Verified Buyer</div>
+            <div class="gallery-quote">"The white cat eye is an absolute showstopper!"</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="https://www.instagram.com/enyojoshades_nigeria" target="_blank" class="btn-primary">
+          FOLLOW @ENYOJOSHADES_NIGERIA
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 — HOW TO ORDER & FINAL CONVERSION -->
+  <section class="section-padding" id="contact" style="background: linear-gradient(180deg, #0A0612 0%, #18102B 100%);">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="heading-serif section-title text-gradient">YOUR NEXT FRAME IS A MESSAGE AWAY.</h2>
+        <p class="section-subtitle">No complicated cart or checkout. Simple direct ordering.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3 class="step-title">FIND YOUR FRAME</h3>
+          <p class="step-desc">Browse the collection and choose your favourite frame silhouette.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3 class="step-title">SEND US A MESSAGE</h3>
+          <p class="step-desc">Tap WhatsApp or Instagram and tell us which frame you want.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3 class="step-title">WE'LL TAKE IT FROM THERE</h3>
+          <p class="step-desc">The Enyojo team handles availability, payment and delivery directly.</p>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 14px; margin-top: 40px; flex-wrap: wrap;">
+        <button class="btn-whatsapp-hero" onclick="triggerGeneralWhatsApp()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="12" r="4.5" />
+            <circle cx="18" cy="12" r="4.5" />
+            <path d="M10.5 11.5c.8-.7 2.2-.7 3 0" />
+            <path d="M1.5 12l2.5-3" />
+            <path d="M22.5 12l-2.5-3" />
+          </svg>
+          ORDER ON WHATSAPP
+        </button>
+        <a href="https://www.instagram.com/enyojoshades_nigeria" target="_blank" class="btn-primary">
+          MESSAGE US ON INSTAGRAM
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 — FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-title" style="font-size: 1.6rem;">ENYOJO SHADES</div>
+          <p class="footer-desc">Eyewear made to complete the way you show up.</p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Home</a></li>
+            <li><a href="#collection" class="footer-link">Shop Frames</a></li>
+            <li><a href="#enyojo-mood" class="footer-link">Frame Styles</a></li>
+            <li><a href="#wear-the-moment" class="footer-link">Campaign Stories</a></li>
+            <li><a href="#contact" class="footer-link">Order Direct</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Social Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/enyojoshades_nigeria" target="_blank" class="footer-link">Instagram</a></li>
+            <li><a href="https://wa.me/2348186389898" target="_blank" class="footer-link">WhatsApp</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Direct Orders</h4>
+          <p style="font-size: 0.85rem; color: var(--text-light-secondary); line-height: 1.6;">Abuja • Niger • Kaduna & Nationwide Shipping.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Enyojo Shades. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE GLASSES ORDER FLOATING BUTTON -->
+  <div class="floating-dock">
+    <button onclick="triggerGeneralWhatsApp()" class="floating-whatsapp-btn" title="Shop Eyewear via WhatsApp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="12" r="4.5" />
+        <circle cx="18" cy="12" r="4.5" />
+        <path d="M10.5 11.5c.8-.7 2.2-.7 3 0" />
+        <path d="M1.5 12l2.5-3" />
+        <path d="M22.5 12l-2.5-3" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- RESPONSIVE QUICK VIEW DETAIL MODAL -->
+  <div id="quick-view-modal" class="modal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(16px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 16px;">
+    <div class="glass-panel" style="width: 100%; max-width: 780px; max-height: 90vh; overflow-y: auto; padding: 28px; position: relative;">
+      <button onclick="closeQuickView()" style="position: absolute; top: 14px; right: 14px; color: #FFF; font-size: 1.6rem; cursor: pointer; z-index: 10;">&times;</button>
+      <div id="quick-view-content"></div>
+    </div>
+  </div>
+
+  <style>
+    .modal.active { display: flex !important; }
+  </style>
+
+  <script src="config.js?v=26.0"></script>
+  <script src="app.js?v=26.0"></script>
+</body>
+</html>
