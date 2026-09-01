@@ -459,33 +459,33 @@ function openQuickView(productId) {
   };
 
   content.innerHTML = `
-    <div class="sheet-grid-container">
+    <div class="sheet-grid-container" style="width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
       
       <!-- LEFT COLUMN: MAIN IMAGE STAGE + 4 ANGLE THUMBNAILS -->
-      <div class="sheet-gallery-stage">
-        <div class="sheet-main-img-box">
-          <img src="${angles.front}" id="sheet-main-img" alt="${product.name}" />
+      <div class="sheet-gallery-stage" style="width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; overflow: hidden;">
+        <div class="sheet-main-img-box" style="width: 100%; max-width: 100%; box-sizing: border-box;">
+          <img src="${angles.front}" id="sheet-main-img" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
 
-        <div class="angle-thumbnail-grid">
-          <button class="angle-thumb-btn active" onclick="switchAngleImage('${angles.front}', this)">
-            <img src="${angles.front}" alt="Front View" />
-            <span class="angle-thumb-label">FRONT</span>
+        <div class="angle-thumbnail-grid" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 6px; width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden; margin-top: 10px;">
+          <button class="angle-thumb-btn active" onclick="switchAngleImage('${angles.front}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 50px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
+            <img src="${angles.front}" alt="Front View" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            <span class="angle-thumb-label" style="position: absolute; bottom: 2px; left: 1px; right: 1px; background: rgba(10, 6, 18, 0.9); font-size: 0.48rem; font-weight: 700; color: var(--soft-lavender); text-align: center; padding: 1px 0; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">FRONT</span>
           </button>
 
-          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.side}', this)">
-            <img src="${angles.side}" alt="Side View" />
-            <span class="angle-thumb-label">SIDE</span>
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.side}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 50px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
+            <img src="${angles.side}" alt="Side View" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            <span class="angle-thumb-label" style="position: absolute; bottom: 2px; left: 1px; right: 1px; background: rgba(10, 6, 18, 0.9); font-size: 0.48rem; font-weight: 700; color: var(--soft-lavender); text-align: center; padding: 1px 0; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SIDE</span>
           </button>
 
-          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.studio}', this)">
-            <img src="${angles.studio}" alt="Studio View" />
-            <span class="angle-thumb-label">STUDIO</span>
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.studio}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 50px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
+            <img src="${angles.studio}" alt="Studio View" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            <span class="angle-thumb-label" style="position: absolute; bottom: 2px; left: 1px; right: 1px; background: rgba(10, 6, 18, 0.9); font-size: 0.48rem; font-weight: 700; color: var(--soft-lavender); text-align: center; padding: 1px 0; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">STUDIO</span>
           </button>
 
-          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.model}', this)">
-            <img src="${angles.model}" alt="Model Wear" />
-            <span class="angle-thumb-label">MODEL</span>
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.model}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 50px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
+            <img src="${angles.model}" alt="Model Wear" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            <span class="angle-thumb-label" style="position: absolute; bottom: 2px; left: 1px; right: 1px; background: rgba(10, 6, 18, 0.9); font-size: 0.48rem; font-weight: 700; color: var(--soft-lavender); text-align: center; padding: 1px 0; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MODEL</span>
           </button>
         </div>
       </div>
