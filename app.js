@@ -274,10 +274,15 @@ function openEditorialStyleGuide(moodName) {
   if (!modal || !content) return;
 
   content.innerHTML = `
-    <!-- DEDICATED CLEAN TOP HEADER BAR FOR MODAL -->
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); box-sizing: border-box;">
+    <!-- DEDICATED CLEAN TOP HEADER BAR (NO BORDER LINE + PERFECTLY CENTERED SVG CLOSE ICON) -->
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 12px; box-sizing: border-box;">
       <span style="font-size: 0.72rem; color: var(--warm-gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">EDITORIAL STYLE GUIDE</span>
-      <button onclick="closeQuickView()" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); color: #FFF; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; flex-shrink: 0;">&times;</button>
+      <button onclick="closeQuickView()" style="background: rgba(255,255,255,0.12); border: 1px solid var(--glass-border); color: #FFF; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; padding: 0; margin: 0;" title="Close Modal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
     </div>
 
     <div style="text-align: center; padding: 6px 0; width: 100%; box-sizing: border-box; overflow-x: hidden;">
@@ -465,10 +470,15 @@ function openQuickView(productId) {
   };
 
   content.innerHTML = `
-    <!-- DEDICATED CLEAN TOP HEADER BAR FOR MODAL (CLOSE BUTTON ABOVE IMAGE) -->
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); box-sizing: border-box;">
+    <!-- DEDICATED CLEAN TOP HEADER BAR (NO BORDER LINE + PERFECTLY CENTERED SVG CLOSE ICON) -->
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 12px; box-sizing: border-box;">
       <span style="font-size: 0.72rem; color: var(--warm-gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">FRAME DETAILS & ORDER</span>
-      <button onclick="closeQuickView()" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); color: #FFF; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; flex-shrink: 0;" title="Close Modal">&times;</button>
+      <button onclick="closeQuickView()" style="background: rgba(255,255,255,0.12); border: 1px solid var(--glass-border); color: #FFF; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; padding: 0; margin: 0;" title="Close Modal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
     </div>
 
     <div class="sheet-grid-container" style="width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
