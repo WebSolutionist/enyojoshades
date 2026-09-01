@@ -274,6 +274,12 @@ function openEditorialStyleGuide(moodName) {
   if (!modal || !content) return;
 
   content.innerHTML = `
+    <!-- DEDICATED CLEAN TOP HEADER BAR FOR MODAL -->
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); box-sizing: border-box;">
+      <span style="font-size: 0.72rem; color: var(--warm-gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">EDITORIAL STYLE GUIDE</span>
+      <button onclick="closeQuickView()" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); color: #FFF; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; flex-shrink: 0;">&times;</button>
+    </div>
+
     <div style="text-align: center; padding: 6px 0; width: 100%; box-sizing: border-box; overflow-x: hidden;">
       <span style="color: var(--warm-gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 6px;">
         ${guide.badge}
@@ -459,6 +465,12 @@ function openQuickView(productId) {
   };
 
   content.innerHTML = `
+    <!-- DEDICATED CLEAN TOP HEADER BAR FOR MODAL (CLOSE BUTTON ABOVE IMAGE) -->
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); box-sizing: border-box;">
+      <span style="font-size: 0.72rem; color: var(--warm-gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">FRAME DETAILS & ORDER</span>
+      <button onclick="closeQuickView()" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); color: #FFF; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; flex-shrink: 0;" title="Close Modal">&times;</button>
+    </div>
+
     <div class="sheet-grid-container" style="width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
       
       <!-- LEFT COLUMN: MAIN IMAGE STAGE + 4 ANGLE THUMBNAILS -->
@@ -520,15 +532,20 @@ function openQuickView(productId) {
           `).join('')}
         </div>
 
-        <!-- QUANTITY STEPPER -->
-        <div class="quantity-row" style="width: 100%; max-width: 100%; box-sizing: border-box;">
-          <span style="font-size: 0.8rem; color: #FFF; font-weight: 600;">Quantity:</span>
-          <div class="quantity-stepper">
-            <button class="step-btn" onclick="changeSheetQuantity(-1)">-</button>
-            <span class="quantity-val" id="sheet-quantity-val">1</span>
-            <button class="step-btn" onclick="changeSheetQuantity(1)">+</button>
+        <!-- RE-ARCHITECTED QUANTITY CONTAINER (PREVENTS PRICE TRUNCATION) -->
+        <div class="quantity-row" style="display: flex; flex-direction: column; gap: 8px; background: rgba(255, 255, 255, 0.03); padding: 12px 14px; border-radius: 16px; border: 1px solid var(--glass-border-purple); margin-bottom: 16px; width: 100%; box-sizing: border-box;">
+          <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; box-sizing: border-box;">
+            <span style="font-size: 0.8rem; color: #FFF; font-weight: 600;">Quantity:</span>
+            <div class="quantity-stepper">
+              <button class="step-btn" onclick="changeSheetQuantity(-1)">-</button>
+              <span class="quantity-val" id="sheet-quantity-val">1</span>
+              <button class="step-btn" onclick="changeSheetQuantity(1)">+</button>
+            </div>
           </div>
-          <span style="font-size: 1.05rem; color: var(--warm-gold); font-weight: 700;" id="sheet-total-price">${product.price}</span>
+          <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; border-top: 1px dashed rgba(255, 255, 255, 0.1); padding-top: 6px; margin-top: 2px; box-sizing: border-box;">
+            <span style="font-size: 0.78rem; color: var(--text-light-secondary); font-weight: 500;">Total Amount:</span>
+            <span style="font-size: 1.15rem; color: var(--warm-gold); font-weight: 700;" id="sheet-total-price">${product.price}</span>
+          </div>
         </div>
 
         <!-- CUSTOMER CHECKOUT FORM FOR OPAY DIRECT PAYMENT -->
@@ -538,9 +555,9 @@ function openQuickView(productId) {
           <input type="text" id="cust-address" class="checkout-input" placeholder="Delivery Address (Abuja, Niger, Kaduna...)" required style="width: 100%; max-width: 100%; box-sizing: border-box;" />
         </div>
 
-        <!-- DUAL ACTION BUTTONS (OPAY PAY ONLINE + WHATSAPP DIRECT ORDER) - STRICT 100% BOX CONTAINMENT -->
+        <!-- DUAL ACTION BUTTONS (CLEAN SOLID FLAT GREEN BUTTONS - NO SHADOW BOXING) -->
         <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 100%; box-sizing: border-box; margin-top: 10px;">
-          <button class="opay-pay-btn" onclick="processPaystackOpayPayment()" style="width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px 10px; font-size: 0.78rem; border-radius: 22px; margin-bottom: 0; display: flex; align-items: center; justify-content: center; gap: 6px; text-align: center; white-space: normal; line-height: 1.25;">
+          <button class="opay-pay-btn" onclick="processPaystackOpayPayment()" style="width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px 10px; font-size: 0.78rem; border-radius: 22px; margin-bottom: 0; display: flex; align-items: center; justify-content: center; gap: 6px; text-align: center; white-space: normal; line-height: 1.25; background: #1DC364 !important; box-shadow: none !important; border: none !important;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
               <rect x="2" y="5" width="20" height="14" rx="2" />
               <line x1="2" y1="10" x2="22" y2="10" />
@@ -548,7 +565,7 @@ function openQuickView(productId) {
             <span>PAY ONLINE NOW (OPay / Card)</span>
           </button>
 
-          <button class="btn-whatsapp-hero" style="width: 100%; max-width: 100%; box-sizing: border-box; justify-content: center; padding: 11px 10px; font-size: 0.78rem; border-radius: 22px; white-space: normal; text-align: center; line-height: 1.25;" onclick="triggerWhatsAppOrder('${product.name}')">
+          <button class="btn-whatsapp-hero" style="width: 100%; max-width: 100%; box-sizing: border-box; justify-content: center; padding: 11px 10px; font-size: 0.78rem; border-radius: 22px; white-space: normal; text-align: center; line-height: 1.25; background: #25D366 !important; box-shadow: none !important; border: none !important;" onclick="triggerWhatsAppOrder('${product.name}')">
             ORDER VIA WHATSAPP INSTEAD
           </button>
         </div>
