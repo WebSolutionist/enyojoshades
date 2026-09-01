@@ -635,6 +635,7 @@ img, video { max-width: 100%; height: auto; display: block; }
   backdrop-filter: blur(28px) !important;
   border: 1px solid var(--glass-border-purple) !important;
   box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8) !important;
+  overflow-x: hidden !important;
 }
 
 .sheet-grid-container {
@@ -643,7 +644,10 @@ img, video { max-width: 100%; height: auto; display: block; }
   gap: 32px;
   align-items: start;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .sheet-gallery-stage {
@@ -651,6 +655,10 @@ img, video { max-width: 100%; height: auto; display: block; }
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .sheet-main-img-box {
@@ -662,6 +670,7 @@ img, video { max-width: 100%; height: auto; display: block; }
   background: #120C22;
   border: 1px solid var(--glass-border-purple);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
 }
 
 .sheet-main-img-box img {
@@ -671,32 +680,41 @@ img, video { max-width: 100%; height: auto; display: block; }
   transition: opacity 0.4s ease, transform 0.4s var(--ease-spring);
 }
 
+/* STRICT MINMAX(0, 1FR) GRID PREVENTS HORIZONTAL OVERFLOW */
 .angle-thumbnail-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  width: 100%;
-  box-sizing: border-box;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 8px;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .angle-thumb-btn {
   position: relative;
-  height: 68px;
+  height: 64px;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
   border-radius: 12px;
   overflow: hidden;
   background: #120C22;
   border: 1.5px solid var(--glass-border);
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .angle-thumb-btn img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .angle-thumb-btn.active, .angle-thumb-btn:hover {
@@ -708,14 +726,18 @@ img, video { max-width: 100%; height: auto; display: block; }
 .angle-thumb-label {
   position: absolute;
   bottom: 2px;
-  left: 2px; right: 2px;
-  background: rgba(10, 6, 18, 0.85);
-  font-size: 0.6rem;
+  left: 1px; right: 1px;
+  background: rgba(10, 6, 18, 0.9);
+  font-size: 0.52rem;
   font-weight: 700;
   color: var(--soft-lavender);
   text-align: center;
-  padding: 2px 0;
-  border-radius: 4px;
+  padding: 1px 0;
+  border-radius: 3px;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  letter-spacing: -0.2px;
 }
 
 .prescription-badge {
@@ -1106,27 +1128,41 @@ img, video { max-width: 100%; height: auto; display: block; }
 
   /* FLAWLESS CONTAINED MODAL SHEET ON SMALL MOBILE PHONES */
   .modal-sheet-panel {
-    width: 92vw !important;
-    max-width: 92vw !important;
+    width: 90vw !important;
+    max-width: 90vw !important;
     max-height: 85vh !important;
-    padding: 16px 14px !important;
+    padding: 16px 12px !important;
     border-radius: 20px !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
+    overflow-y: auto !important;
   }
 
   .sheet-grid-container {
     width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
   }
 
+  .sheet-gallery-stage {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
   .sheet-main-img-box {
-    height: 220px !important;
+    height: 210px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .sheet-grid-container h2 {
-    font-size: 1.15rem !important;
+    font-size: 1.1rem !important;
     line-height: 1.25 !important;
     word-break: break-word !important;
     overflow-wrap: break-word !important;
@@ -1134,26 +1170,41 @@ img, video { max-width: 100%; height: auto; display: block; }
     max-width: 100% !important;
   }
 
+  /* ABSOLUTE STRICT MINMAX(0, 1FR) PREVENTS 4TH THUMBNAIL OVERFLOW */
   .angle-thumbnail-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 6px !important;
     width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .angle-thumb-btn {
-    height: 52px !important;
+    height: 48px !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
     border-radius: 8px !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .angle-thumb-label {
-    font-size: 0.5rem !important;
+    font-size: 0.46rem !important;
     padding: 1px 0 !important;
-    letter-spacing: 0px !important;
+    letter-spacing: -0.3px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .prescription-badge {
-    font-size: 0.72rem !important;
+    font-size: 0.7rem !important;
     padding: 6px 10px !important;
     margin: 8px 0 12px 0 !important;
     white-space: normal !important;
