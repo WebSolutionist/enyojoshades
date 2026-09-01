@@ -10,7 +10,10 @@
   <meta property="og:description" content="Eyewear made to complete the way you show up. Order directly via WhatsApp or Instagram.">
   <meta property="og:type" content="website">
 
-  <link rel="stylesheet" href="index.css?v=26.0">
+  <!-- Paystack / OPay Payment Engine SDK -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+  <link rel="stylesheet" href="index.css?v=27.0">
 </head>
 <body>
 
@@ -462,9 +465,9 @@
     </button>
   </div>
 
-  <!-- RESPONSIVE QUICK VIEW DETAIL MODAL -->
+  <!-- RICH MULTI-ANGLE & COLOR PRODUCT DETAIL SHEET MODAL -->
   <div id="quick-view-modal" class="modal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(16px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 16px;">
-    <div class="glass-panel" style="width: 100%; max-width: 780px; max-height: 90vh; overflow-y: auto; padding: 28px; position: relative;">
+    <div class="glass-panel modal-sheet-panel" style="width: 100%; max-width: 860px; max-height: 92vh; overflow-y: auto; padding: 28px; position: relative;">
       <button onclick="closeQuickView()" style="position: absolute; top: 14px; right: 14px; color: #FFF; font-size: 1.6rem; cursor: pointer; z-index: 10;">&times;</button>
       <div id="quick-view-content"></div>
     </div>
@@ -474,7 +477,7 @@
     .modal.active { display: flex !important; }
   </style>
 
-  <script src="config.js?v=26.0"></script>
-  <script src="app.js?v=26.0"></script>
+  <script src="config.js?v=27.0"></script>
+  <script src="app.js?v=27.0"></script>
 </body>
 </html>

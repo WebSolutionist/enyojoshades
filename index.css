@@ -605,6 +605,208 @@ img, video { max-width: 100%; height: auto; display: block; }
 .floating-whatsapp-btn:hover { transform: scale(1.1); }
 
 /* =========================================================
+   RICH MULTI-ANGLE & COLOR PRODUCT DETAIL SHEET MODAL STYLES
+   ========================================================= */
+
+.sheet-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.sheet-gallery-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sheet-main-img-box {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #120C22;
+  border: 1px solid var(--glass-border-purple);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.sheet-main-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-spring);
+}
+
+.angle-thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.angle-thumb-btn {
+  position: relative;
+  height: 70px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #120C22;
+  border: 1.5px solid var(--glass-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.angle-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.angle-thumb-btn.active, .angle-thumb-btn:hover {
+  border-color: var(--warm-gold);
+  box-shadow: 0 0 14px var(--warm-gold-glow);
+  transform: translateY(-2px);
+}
+
+.angle-thumb-label {
+  position: absolute;
+  bottom: 2px;
+  left: 2px; right: 2px;
+  background: rgba(10, 6, 18, 0.85);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--soft-lavender);
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 4px;
+}
+
+.prescription-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(118, 91, 167, 0.2);
+  border: 1px solid var(--glass-border-purple);
+  color: var(--soft-lavender);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 12px 0 16px 0;
+}
+
+.color-swatch-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 16px 0;
+  flex-wrap: wrap;
+}
+
+.color-swatch-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-light-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.color-swatch-btn.active, .color-swatch-btn:hover {
+  color: #FFF;
+  background: var(--enyojo-purple);
+  border-color: var(--enyojo-purple);
+  box-shadow: 0 4px 14px var(--enyojo-purple-glow);
+}
+
+.quantity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  margin-bottom: 20px;
+}
+
+.quantity-stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(24, 16, 43, 0.8);
+  border: 1px solid var(--glass-border-purple);
+  padding: 4px 12px;
+  border-radius: 24px;
+}
+
+.step-btn {
+  color: #FFF;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--warm-gold);
+  min-width: 20px;
+  text-align: center;
+}
+
+.checkout-form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.checkout-input {
+  width: 100%;
+  background: rgba(10, 6, 18, 0.7);
+  border: 1px solid var(--glass-border-purple);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: #FFF;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.checkout-input:focus {
+  border-color: var(--warm-gold);
+  box-shadow: 0 0 10px var(--warm-gold-glow);
+}
+
+.opay-pay-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1DC364, #0DAA51);
+  color: #FFF;
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(29, 195, 100, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.opay-pay-btn:hover { transform: translateY(-2px); }
+
+/* =========================================================
    FULLSTACK RESPONSIVE MOBILE BREAKPOINTS (< 992px & < 768px & < 576px)
    ========================================================= */
 
@@ -707,6 +909,14 @@ img, video { max-width: 100%; height: auto; display: block; }
     width: 24px;
     border-radius: 10px;
     background: linear-gradient(90deg, var(--enyojo-purple), var(--warm-gold));
+  }
+
+  .sheet-grid-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .sheet-main-img-box {
+    height: 280px;
   }
 
   .wear-moment-sticky-wrapper { height: auto; }
@@ -824,6 +1034,11 @@ img, video { max-width: 100%; height: auto; display: block; }
 @media (max-width: 576px) {
   .container { padding-left: 20px; padding-right: 20px; box-sizing: border-box; }
   .section-padding { padding: 50px 0; }
+
+  .modal-sheet-panel {
+    padding: 20px !important;
+    border-radius: 20px !important;
+  }
 
   .wear-moment-header { padding: 0 20px; box-sizing: border-box; }
   .horizontal-track-container { padding: 0 20px; box-sizing: border-box; }

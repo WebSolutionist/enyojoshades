@@ -1,11 +1,16 @@
 /**
- * ENYOJO SHADES — FULLSTACK EDITORIAL MOTION ENGINE
+ * ENYOJO SHADES — FULLSTACK EDITORIAL MOTION & ON-SITE PAYMENT ENGINE
  */
 
 let currentSlideIdx = 0;
 const SLIDE_DURATION = 6000;
 let slideTimer = null;
 let progressInterval = null;
+
+// SHEET STATE
+let currentProduct = null;
+let currentQuantity = 1;
+let selectedColor = '';
 
 // MOOD REGISTRY DATA FOR DESKTOP & MOBILE INTERACTIVE MOOD STAGE
 const MOOD_DATA = {
@@ -197,12 +202,10 @@ function initEnyojoMoodInteractivity() {
     mobileCard.addEventListener('touchend', (e) => {
       mTouchEndX = e.changedTouches[0].screenX;
       if (mTouchEndX < mTouchStartX - 40) {
-        // Swipe left -> next mood
         const currentIdx = MOOD_KEYS.indexOf(activeMoodKey);
         const nextKey = MOOD_KEYS[(currentIdx + 1) % MOOD_KEYS.length];
         activateMood(nextKey);
       } else if (mTouchEndX > mTouchStartX + 40) {
-        // Swipe right -> prev mood
         const currentIdx = MOOD_KEYS.indexOf(activeMoodKey);
         const prevKey = MOOD_KEYS[(currentIdx - 1 + MOOD_KEYS.length) % MOOD_KEYS.length];
         activateMood(prevKey);
@@ -218,7 +221,6 @@ function initEnyojoMoodInteractivity() {
   }
 }
 
-// GLOBAL FUNCTION TO ACTIVATE MOOD (DESKTOP & MOBILE STAGE)
 function activateMood(moodName) {
   if (!MOOD_DATA[moodName]) return;
   activeMoodKey = moodName;
@@ -228,12 +230,10 @@ function activateMood(moodName) {
   const moodCards = document.querySelectorAll('.mood-portrait-card');
   const moodDots = document.querySelectorAll('.mood-dot');
 
-  // Update Top Mood Labels
   moodLabels.forEach(l => {
     l.classList.toggle('active', l.dataset.mood === moodName);
   });
 
-  // Desktop Spread Updates
   if (moodSpread) {
     moodSpread.classList.add('has-active');
     moodCards.forEach(c => {
@@ -241,7 +241,6 @@ function activateMood(moodName) {
     });
   }
 
-  // Mobile Interactive Mood Stage Updates
   const mobileCard = document.getElementById('mobile-mood-card');
   const mobileImg = document.getElementById('mobile-mood-img');
   const mobileBadge = document.getElementById('mobile-mood-badge');
@@ -261,7 +260,6 @@ function activateMood(moodName) {
       mobileImg.style.opacity = '1';
     }, 150);
 
-    // Update Dots
     moodDots.forEach(d => {
       d.classList.toggle('active', d.dataset.mood === moodName);
     });
@@ -305,7 +303,7 @@ function renderCatalog(items) {
         <img src="${item.modelImage}" alt="${item.name} Styled Model View" class="img-product-model" loading="lazy" />
         
         <div class="product-quick-cta">
-          <button class="btn-card-order" onclick="event.stopPropagation(); triggerWhatsAppOrder('${item.name}')">
+          <button class="btn-card-order" onclick="event.stopPropagation(); openQuickView('${item.id}')">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="6" cy="12" r="4.5" />
               <circle cx="18" cy="12" r="4.5" />
@@ -313,7 +311,7 @@ function renderCatalog(items) {
               <path d="M1.5 12l2.5-3" />
               <path d="M22.5 12l-2.5-3" />
             </svg>
-            Order Frame on WhatsApp
+            View Angles & Order Frame
           </button>
         </div>
       </div>
@@ -350,7 +348,9 @@ function initVibeFilters() {
 }
 
 function triggerWhatsAppOrder(productName) {
-  window.open(getWhatsAppOrderUrl(productName), '_blank');
+  const qty = currentQuantity || 1;
+  const col = selectedColor || '';
+  window.open(getWhatsAppOrderUrl(productName, qty, col), '_blank');
 }
 
 function triggerGeneralWhatsApp() {
@@ -366,40 +366,120 @@ function initModalListeners() {
   });
 }
 
+// RICH MULTI-ANGLE & COLOR PRODUCT DETAIL SHEET MODAL
 function openQuickView(productId) {
   const product = CONFIG.products.find(p => p.id === productId);
   if (!product) return;
+
+  currentProduct = product;
+  currentQuantity = 1;
+  selectedColor = product.colors[0] || '';
 
   const modal = document.getElementById('quick-view-modal');
   const content = document.getElementById('quick-view-content');
   if (!modal || !content) return;
 
+  const angles = product.angleImages || {
+    front: product.image,
+    side: product.modelImage,
+    studio: product.image,
+    model: product.modelImage
+  };
+
   content.innerHTML = `
-    <div class="modal-grid-container">
-      <div class="modal-img-wrapper" style="position: relative; border-radius: 16px; overflow: hidden; background: #120C22; height: 320px;">
-        <img src="${product.modelImage}" style="width: 100%; height: 100%; object-fit: cover;" alt="${product.name}" />
-      </div>
-      <div>
-        <span style="color: var(--warm-gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">${product.tag}</span>
-        <h2 style="font-size: clamp(1.3rem, 4vw, 1.8rem); color: #FFF; margin: 6px 0;">${product.name}</h2>
-        <p style="font-size: clamp(1.2rem, 3vw, 1.5rem); color: var(--warm-gold); font-weight: 700; margin-bottom: 10px;">${product.price}</p>
-        
-        <p style="color: var(--text-light-secondary); font-size: 0.85rem; line-height: 1.6; margin-bottom: 16px;">${product.description}</p>
-        
-        <div style="font-size: 0.75rem; color: var(--soft-lavender); background: rgba(118, 91, 167, 0.15); padding: 12px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--glass-border-purple);">
-          <strong>Available Colors:</strong> ${product.colors.join(', ')}<br>
-          <strong>Specifications:</strong> ${product.specifications.join(' • ')}
+    <div class="sheet-grid-container">
+      
+      <!-- LEFT COLUMN: MAIN IMAGE STAGE + 4 ANGLE THUMBNAILS -->
+      <div class="sheet-gallery-stage">
+        <div class="sheet-main-img-box">
+          <img src="${angles.front}" id="sheet-main-img" alt="${product.name}" />
         </div>
-        
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <button class="btn-whatsapp-hero" style="flex: 1; min-width: 160px; justify-content: center; padding: 12px;" onclick="triggerWhatsAppOrder('${product.name}')">
-            Order on WhatsApp
+
+        <div class="angle-thumbnail-grid">
+          <button class="angle-thumb-btn active" onclick="switchAngleImage('${angles.front}', this)">
+            <img src="${angles.front}" alt="Front View" />
+            <span class="angle-thumb-label">FRONT</span>
           </button>
-          <a href="${CONFIG.instagramUrl}" target="_blank" class="btn-primary" style="padding: 12px 20px;">
-            Instagram DM
-          </a>
+
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.side}', this)">
+            <img src="${angles.side}" alt="Side View" />
+            <span class="angle-thumb-label">SIDE</span>
+          </button>
+
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.studio}', this)">
+            <img src="${angles.studio}" alt="Studio View" />
+            <span class="angle-thumb-label">STUDIO</span>
+          </button>
+
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.model}', this)">
+            <img src="${angles.model}" alt="Model Wear" />
+            <span class="angle-thumb-label">MODEL</span>
+          </button>
         </div>
       </div>
+
+      <!-- RIGHT COLUMN: DETAILS, COLORS, QUANTITY & OPAY PAYMENTS -->
+      <div>
+        <span style="color: var(--warm-gold); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">${product.tag}</span>
+        <h2 style="font-size: clamp(1.4rem, 4vw, 1.8rem); color: #FFF; margin: 4px 0 8px 0; font-family: var(--font-serif);">${product.name}</h2>
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+          <span style="font-size: 1.35rem; color: var(--warm-gold); font-weight: 700;" id="sheet-unit-price">${product.price}</span>
+          <span style="font-size: 0.78rem; color: var(--soft-lavender); background: rgba(118, 91, 167, 0.25); padding: 4px 10px; border-radius: 12px; border: 1px solid var(--glass-border-purple);">In Stock</span>
+        </div>
+
+        <div class="prescription-badge">
+          <span>🔍</span>
+          <span>Prescription & Fashion Lens Compatible</span>
+        </div>
+
+        <p style="color: var(--text-light-secondary); font-size: 0.82rem; line-height: 1.5; margin-bottom: 14px;">${product.description}</p>
+
+        <!-- COLOR SWATCH SELECTOR -->
+        <div style="font-size: 0.78rem; color: #FFF; font-weight: 600; margin-bottom: 6px;">Select Color Variant:</div>
+        <div class="color-swatch-group">
+          ${product.colors.map((c, i) => `
+            <button class="color-swatch-btn ${i === 0 ? 'active' : ''}" onclick="selectSheetColor('${c}', this)">
+              ${c}
+            </button>
+          `).join('')}
+        </div>
+
+        <!-- QUANTITY STEPPER -->
+        <div class="quantity-row">
+          <span style="font-size: 0.82rem; color: #FFF; font-weight: 600;">Quantity:</span>
+          <div class="quantity-stepper">
+            <button class="step-btn" onclick="changeSheetQuantity(-1)">-</button>
+            <span class="quantity-val" id="sheet-quantity-val">1</span>
+            <button class="step-btn" onclick="changeSheetQuantity(1)">+</button>
+          </div>
+          <span style="font-size: 1.1rem; color: var(--warm-gold); font-weight: 700;" id="sheet-total-price">${product.price}</span>
+        </div>
+
+        <!-- CUSTOMER CHECKOUT FORM FOR OPAY DIRECT PAYMENT -->
+        <div class="checkout-form-box">
+          <input type="text" id="cust-name" class="checkout-input" placeholder="Full Name (e.g. Amina Bello)" required />
+          <input type="tel" id="cust-phone" class="checkout-input" placeholder="Phone Number (e.g. 08186389898)" required />
+          <input type="text" id="cust-address" class="checkout-input" placeholder="Delivery Address (Abuja, Niger, Kaduna...)" required />
+        </div>
+
+        <!-- DUAL ACTION BUTTONS (OPAY PAY ONLINE + WHATSAPP DIRECT ORDER) -->
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button class="opay-pay-btn" onclick="processPaystackOpayPayment()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2" />
+              <line x1="2" y1="10" x2="22" y2="10" />
+            </svg>
+            <span>PAY ONLINE NOW (OPay / Card / Transfer)</span>
+          </button>
+
+          <button class="btn-whatsapp-hero" style="width: 100%; justify-content: center; padding: 12px;" onclick="triggerWhatsAppOrder('${product.name}')">
+            ORDER VIA WHATSAPP INSTEAD
+          </button>
+        </div>
+
+      </div>
+
     </div>
   `;
 
@@ -408,4 +488,99 @@ function openQuickView(productId) {
 
 function closeQuickView() {
   document.getElementById('quick-view-modal').classList.remove('active');
+}
+
+// SWITCH ANGLE THUMBNAILS
+function switchAngleImage(imgUrl, thumbEl) {
+  const mainImg = document.getElementById('sheet-main-img');
+  const thumbs = document.querySelectorAll('.angle-thumb-btn');
+
+  if (mainImg) {
+    mainImg.style.opacity = '0.3';
+    setTimeout(() => {
+      mainImg.src = imgUrl;
+      mainImg.style.opacity = '1';
+    }, 150);
+  }
+
+  thumbs.forEach(t => t.classList.remove('active'));
+  if (thumbEl) thumbEl.classList.add('active');
+}
+
+// SELECT COLOR VARIANT
+function selectSheetColor(colorName, btnEl) {
+  selectedColor = colorName;
+  const buttons = document.querySelectorAll('.color-swatch-btn');
+  buttons.forEach(b => b.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+}
+
+// CHANGE QUANTITY STEPPER
+function changeSheetQuantity(delta) {
+  currentQuantity = Math.max(1, currentQuantity + delta);
+  
+  const qVal = document.getElementById('sheet-quantity-val');
+  const totalPriceEl = document.getElementById('sheet-total-price');
+
+  if (qVal) qVal.textContent = currentQuantity;
+  
+  if (totalPriceEl && currentProduct) {
+    const total = currentProduct.rawPrice * currentQuantity;
+    totalPriceEl.textContent = `₦${total.toLocaleString()}`;
+  }
+}
+
+// OPAY / PAYSTACK INLINE CHECKOUT SYSTEM
+function processPaystackOpayPayment() {
+  if (!currentProduct) return;
+
+  const nameInput = document.getElementById('cust-name');
+  const phoneInput = document.getElementById('cust-phone');
+  const addressInput = document.getElementById('cust-address');
+
+  const custName = nameInput ? nameInput.value.trim() : '';
+  const custPhone = phoneInput ? phoneInput.value.trim() : '';
+  const custAddress = addressInput ? addressInput.value.trim() : '';
+
+  if (!custName || !custPhone) {
+    alert('Please enter your Name and Phone Number to proceed with payment.');
+    if (nameInput) nameInput.focus();
+    return;
+  }
+
+  const totalAmountKobo = currentProduct.rawPrice * currentQuantity * 100;
+  const dummyEmail = `${custPhone.replace(/[^0-9]/g, '') || 'customer'}@enyojoshades.com`;
+
+  if (typeof PaystackPop === 'undefined') {
+    // Direct Fallback to WhatsApp Order with Details
+    alert('Opening direct order link...');
+    triggerWhatsAppOrder(currentProduct.name);
+    return;
+  }
+
+  const handler = PaystackPop.setup({
+    key: CONFIG.paystackPublicKey,
+    email: dummyEmail,
+    amount: totalAmountKobo,
+    currency: 'NGN',
+    ref: 'ENYOJO_' + Math.floor((Math.random() * 1000000000) + 1),
+    metadata: {
+      custom_fields: [
+        { display_name: "Customer Name", variable_name: "customer_name", value: custName },
+        { display_name: "Phone Number", variable_name: "phone_number", value: custPhone },
+        { display_name: "Delivery Address", variable_name: "delivery_address", value: custAddress },
+        { display_name: "Product Frame", variable_name: "product_frame", value: `${currentQuantity}x ${currentProduct.name} (${selectedColor})` }
+      ]
+    },
+    callback: function(response) {
+      alert(`Payment Successful! Receipt Reference: ${response.reference}\nRouting order confirmation to WhatsApp...`);
+      closeQuickView();
+      window.open(getWhatsAppOrderUrl(currentProduct.name, currentQuantity, selectedColor, response.reference), '_blank');
+    },
+    onClose: function() {
+      // User closed popup without paying
+    }
+  });
+
+  handler.openIframe();
 }
