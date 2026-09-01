@@ -274,15 +274,15 @@ function openEditorialStyleGuide(moodName) {
   if (!modal || !content) return;
 
   content.innerHTML = `
-    <div style="text-align: center; padding: 6px 0;">
+    <div style="text-align: center; padding: 6px 0; width: 100%; box-sizing: border-box; overflow-x: hidden;">
       <span style="color: var(--warm-gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 6px;">
         ${guide.badge}
       </span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.3rem, 4vw, 2.2rem); color: #FFF; margin-bottom: 12px; line-height: 1.25; word-break: break-word;">
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.3rem, 4vw, 2.2rem); color: #FFF; margin-bottom: 12px; line-height: 1.25; word-break: break-word; max-width: 100%;">
         ${guide.title}
       </h2>
       
-      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border-purple); padding: 16px; border-radius: 16px; margin-bottom: 20px; text-align: left;">
+      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border-purple); padding: 14px; border-radius: 16px; margin-bottom: 20px; text-align: left; width: 100%; box-sizing: border-box;">
         <div style="font-size: 0.78rem; color: var(--soft-lavender); font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -292,8 +292,8 @@ function openEditorialStyleGuide(moodName) {
         <p style="color: var(--text-light-secondary); font-size: 0.85rem; line-height: 1.5; word-break: break-word;">${guide.tip}</p>
       </div>
 
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <button class="btn-primary" onclick="closeQuickView(); filterAndScrollToMood('${moodName}')" style="width: 100%; max-width: 320px; font-size: 0.82rem; padding: 12px 20px;">
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; width: 100%; box-sizing: border-box;">
+        <button class="btn-primary" onclick="closeQuickView(); filterAndScrollToMood('${moodName}')" style="width: 100%; max-width: 100%; font-size: 0.82rem; padding: 12px 16px; box-sizing: border-box;">
           EXPLORE ${moodName} FRAMES IN SHOP →
         </button>
       </div>
@@ -468,39 +468,39 @@ function openQuickView(productId) {
         </div>
 
         <div class="angle-thumbnail-grid" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 6px; width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden; margin-top: 10px;">
-          <button class="angle-thumb-btn active" onclick="switchAngleImage('${angles.front}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 50px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
+          <button class="angle-thumb-btn active" onclick="switchAngleImage('${angles.front}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 48px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
             <img src="${angles.front}" alt="Front View" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
             <span class="angle-thumb-label" style="position: absolute; bottom: 2px; left: 1px; right: 1px; background: rgba(10, 6, 18, 0.9); font-size: 0.48rem; font-weight: 700; color: var(--soft-lavender); text-align: center; padding: 1px 0; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">FRONT</span>
           </button>
 
-          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.side}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 50px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.side}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 48px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
             <img src="${angles.side}" alt="Side View" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
             <span class="angle-thumb-label" style="position: absolute; bottom: 2px; left: 1px; right: 1px; background: rgba(10, 6, 18, 0.9); font-size: 0.48rem; font-weight: 700; color: var(--soft-lavender); text-align: center; padding: 1px 0; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SIDE</span>
           </button>
 
-          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.studio}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 50px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.studio}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 48px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
             <img src="${angles.studio}" alt="Studio View" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
             <span class="angle-thumb-label" style="position: absolute; bottom: 2px; left: 1px; right: 1px; background: rgba(10, 6, 18, 0.9); font-size: 0.48rem; font-weight: 700; color: var(--soft-lavender); text-align: center; padding: 1px 0; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">STUDIO</span>
           </button>
 
-          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.model}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 50px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
+          <button class="angle-thumb-btn" onclick="switchAngleImage('${angles.model}', this)" style="flex: 1 1 0px; min-width: 0; width: 0; height: 48px; border-radius: 8px; overflow: hidden; position: relative; padding: 0; margin: 0; box-sizing: border-box; cursor: pointer;">
             <img src="${angles.model}" alt="Model Wear" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
             <span class="angle-thumb-label" style="position: absolute; bottom: 2px; left: 1px; right: 1px; background: rgba(10, 6, 18, 0.9); font-size: 0.48rem; font-weight: 700; color: var(--soft-lavender); text-align: center; padding: 1px 0; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MODEL</span>
           </button>
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: DETAILS, COLORS, QUANTITY & OPAY PAYMENTS -->
-      <div>
-        <span style="color: var(--warm-gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">${product.tag}</span>
-        <h2 style="font-size: clamp(1.15rem, 3.8vw, 1.8rem); color: #FFF; margin: 4px 0 8px 0; font-family: var(--font-serif); word-break: break-word; overflow-wrap: break-word; line-height: 1.25;">${product.name}</h2>
+      <!-- RIGHT COLUMN: DETAILS, COLORS, QUANTITY & OPAY PAYMENTS (STRICT 100% CONTAINED) -->
+      <div style="width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
+        <span style="color: var(--warm-gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: block;">${product.tag}</span>
+        <h2 style="font-size: clamp(1.15rem, 3.8vw, 1.8rem); color: #FFF; margin: 4px 0 8px 0; font-family: var(--font-serif); word-break: break-word; overflow-wrap: break-word; line-height: 1.25; max-width: 100%;">${product.name}</h2>
         
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; width: 100%; box-sizing: border-box;">
           <span style="font-size: 1.25rem; color: var(--warm-gold); font-weight: 700;" id="sheet-unit-price">${product.price}</span>
           <span style="font-size: 0.72rem; color: var(--soft-lavender); background: rgba(118, 91, 167, 0.25); padding: 4px 10px; border-radius: 12px; border: 1px solid var(--glass-border-purple);">In Stock</span>
         </div>
 
-        <div class="prescription-badge">
+        <div class="prescription-badge" style="width: 100%; max-width: 100%; box-sizing: border-box;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -508,11 +508,11 @@ function openQuickView(productId) {
           <span>Prescription & Fashion Lens Compatible</span>
         </div>
 
-        <p style="color: var(--text-light-secondary); font-size: 0.78rem; line-height: 1.45; margin-bottom: 12px; word-break: break-word;">${product.description}</p>
+        <p style="color: var(--text-light-secondary); font-size: 0.78rem; line-height: 1.45; margin-bottom: 12px; word-break: break-word; max-width: 100%;">${product.description}</p>
 
         <!-- COLOR SWATCH SELECTOR -->
         <div style="font-size: 0.75rem; color: #FFF; font-weight: 600; margin-bottom: 6px;">Select Color Variant:</div>
-        <div class="color-swatch-group">
+        <div class="color-swatch-group" style="width: 100%; max-width: 100%; box-sizing: border-box;">
           ${product.colors.map((c, i) => `
             <button class="color-swatch-btn ${i === 0 ? 'active' : ''}" onclick="selectSheetColor('${c}', this)">
               ${c}
@@ -521,7 +521,7 @@ function openQuickView(productId) {
         </div>
 
         <!-- QUANTITY STEPPER -->
-        <div class="quantity-row">
+        <div class="quantity-row" style="width: 100%; max-width: 100%; box-sizing: border-box;">
           <span style="font-size: 0.8rem; color: #FFF; font-weight: 600;">Quantity:</span>
           <div class="quantity-stepper">
             <button class="step-btn" onclick="changeSheetQuantity(-1)">-</button>
@@ -532,23 +532,23 @@ function openQuickView(productId) {
         </div>
 
         <!-- CUSTOMER CHECKOUT FORM FOR OPAY DIRECT PAYMENT -->
-        <div class="checkout-form-box">
-          <input type="text" id="cust-name" class="checkout-input" placeholder="Full Name (e.g. Amina Bello)" required />
-          <input type="tel" id="cust-phone" class="checkout-input" placeholder="Phone Number (e.g. 08186389898)" required />
-          <input type="text" id="cust-address" class="checkout-input" placeholder="Delivery Address (Abuja, Niger, Kaduna...)" required />
+        <div class="checkout-form-box" style="width: 100%; max-width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px;">
+          <input type="text" id="cust-name" class="checkout-input" placeholder="Full Name (e.g. Amina Bello)" required style="width: 100%; max-width: 100%; box-sizing: border-box;" />
+          <input type="tel" id="cust-phone" class="checkout-input" placeholder="Phone Number (e.g. 08186389898)" required style="width: 100%; max-width: 100%; box-sizing: border-box;" />
+          <input type="text" id="cust-address" class="checkout-input" placeholder="Delivery Address (Abuja, Niger, Kaduna...)" required style="width: 100%; max-width: 100%; box-sizing: border-box;" />
         </div>
 
-        <!-- DUAL ACTION BUTTONS (OPAY PAY ONLINE + WHATSAPP DIRECT ORDER) -->
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button class="opay-pay-btn" onclick="processPaystackOpayPayment()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- DUAL ACTION BUTTONS (OPAY PAY ONLINE + WHATSAPP DIRECT ORDER) - STRICT 100% BOX CONTAINMENT -->
+        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 100%; box-sizing: border-box; margin-top: 10px;">
+          <button class="opay-pay-btn" onclick="processPaystackOpayPayment()" style="width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px 10px; font-size: 0.78rem; border-radius: 22px; margin-bottom: 0; display: flex; align-items: center; justify-content: center; gap: 6px; text-align: center; white-space: normal; line-height: 1.25;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
               <rect x="2" y="5" width="20" height="14" rx="2" />
               <line x1="2" y1="10" x2="22" y2="10" />
             </svg>
-            <span>PAY ONLINE NOW (OPay / Card / Transfer)</span>
+            <span>PAY ONLINE NOW (OPay / Card)</span>
           </button>
 
-          <button class="btn-whatsapp-hero" style="width: 100%; justify-content: center; padding: 10px; font-size: 0.78rem;" onclick="triggerWhatsAppOrder('${product.name}')">
+          <button class="btn-whatsapp-hero" style="width: 100%; max-width: 100%; box-sizing: border-box; justify-content: center; padding: 11px 10px; font-size: 0.78rem; border-radius: 22px; white-space: normal; text-align: center; line-height: 1.25;" onclick="triggerWhatsAppOrder('${product.name}')">
             ORDER VIA WHATSAPP INSTEAD
           </button>
         </div>
